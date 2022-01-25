@@ -16,7 +16,7 @@ if (process.argv.length <= 3) {
 			console.log(error);
 		});
 } else if (process.argv[2] === 'group') {
-	api.post('http://localhost:3000/send/group/', {
+	api.post('http://localhost:3001/send/group/', {
 		number: process.argv[3],
 		message: process.argv[4]
 	})

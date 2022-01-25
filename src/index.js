@@ -3,7 +3,7 @@ import { Client } from 'whatsapp-web.js';
 import qrcode from 'qrcode-terminal';
 import bodyParser from 'body-parser';
 
-const port = 3000;
+const port = 3001;
 const server = express();
 
 const client = new Client();
