@@ -35,6 +35,7 @@ server.post('/send/group/', (req, res) => {
 
 server.post('/send/private/', (req, res) => {
 	let { number, message } = req.body;
+	console.log(req.body);
 	number = number.includes('@c.us') ? number : `${number}@c.us`;
 	client.sendMessage(number, message);
 
