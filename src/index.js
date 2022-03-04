@@ -1,16 +1,21 @@
 import express from 'express';
-import { Client } from 'whatsapp-web.js';
+import { Client, LocalAuth } from 'whatsapp-web.js';
 import qrcode from 'qrcode-terminal';
 import bodyParser from 'body-parser';
 
 const port = 3001;
 const server = express();
 
-const client = new Client();
+const client = new Client({
+	authStrategy: new LocalAuth(),
+	puppeteer: {
+		executablePath: process.env.CHROME_BIN || undefined
+	}
+});
 
 server.use(express.json());
 server.use(bodyParser.json());
-
+client.initialize();
 client.on('qr', (qr) => {
 	console.log('New QR CODE');
 	qrcode.generate(qr, { small: true });
@@ -19,8 +24,6 @@ client.on('qr', (qr) => {
 client.on('ready', () => {
 	console.log('Whatsapp Conectado e Pronto para Uso!');
 });
-
-client.initialize();
 
 server.post('/send/group/', (req, res) => {
 	let { number, message } = req.body;
