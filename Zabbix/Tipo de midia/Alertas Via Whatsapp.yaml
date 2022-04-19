@@ -1,6 +1,6 @@
 zabbix_export:
   version: '6.0'
-  date: '2022-03-04T20:55:36Z'
+  date: '2022-04-19T19:35:28Z'
   media_types:
     -
       name: 'Alerta Whatsapp'
@@ -9,6 +9,8 @@ zabbix_export:
       parameters:
         - '{ALERT.SENDTO}'
         - '{ALERT.MESSAGE}'
+      attempts: '1'
+      attempt_interval: 20s
       message_templates:
         -
           event_source: TRIGGERS

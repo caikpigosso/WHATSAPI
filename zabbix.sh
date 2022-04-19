@@ -7,7 +7,7 @@ IN_SUBJECT=$1
 IN_BODY=$2
 
 # tweak to your needs
-WEBHOOK_URL='http://localhost:3001/send/private/'
+WEBHOOK_URL='http://localhost:3001/send/group/'
 
 json_escape() {
     printf '%s' "$1" | python -c 'import json,sys; print(json.dumps(sys.stdin.read()))'
