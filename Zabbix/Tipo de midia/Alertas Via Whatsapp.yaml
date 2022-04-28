@@ -1,6 +1,6 @@
 zabbix_export:
   version: '6.0'
-  date: '2022-04-19T19:35:28Z'
+  date: '2022-04-28T21:24:31Z'
   media_types:
     -
       name: 'Alerta Whatsapp'
@@ -15,24 +15,25 @@ zabbix_export:
         -
           event_source: TRIGGERS
           operation_mode: PROBLEM
-          subject: 'Problem: {EVENT.NAME}'
           message: |
-            Problem started at {EVENT.TIME} on {EVENT.DATE}
-            Problem name: {EVENT.NAME}
-            Host: {HOST.NAME}
-            Severity: {EVENT.SEVERITY}
-            Operational data: {EVENT.OPDATA}
-            Original problem ID: {EVENT.ID}
-            {TRIGGER.URL}
+            ❌ *Problema:* *{HOST.NAME}*
+            
+            *{EVENT.NAME}*
+            
+            *{ITEM.NAME1}* _{ITEM.VALUE1}_
+             
+            ```{HOST.IP}```
+            *_{EVENT.SEVERITY}_*
         -
           event_source: TRIGGERS
           operation_mode: RECOVERY
           subject: 'Resolved in {EVENT.DURATION}: {EVENT.NAME}'
           message: |
-            Problem has been resolved at {EVENT.RECOVERY.TIME} on {EVENT.RECOVERY.DATE}
-            Problem name: {EVENT.NAME}
-            Problem duration: {EVENT.DURATION}
-            Host: {HOST.NAME}
-            Severity: {EVENT.SEVERITY}
-            Original problem ID: {EVENT.ID}
-            {TRIGGER.URL}
+            ✅ *Resolvido:* *{HOST.NAME}*
+            
+            *{EVENT.NAME}*
+            
+            *{ITEM.NAME1}* _{ITEM.VALUE1}_
+             
+            ```{HOST.IP}```
+            *_{EVENT.SEVERITY}_*
