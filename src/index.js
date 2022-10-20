@@ -9,7 +9,11 @@ const server = express();
 const client = new Client({
 	authStrategy: new LocalAuth(),
 	puppeteer: {
-		executablePath: process.env.CHROME_BIN || undefined
+		args: [
+			'--no-sandbox',
+			'--disable-setuid-sandbox',
+			'--user-data-dir=./'
+		]
 	}
 });
 
